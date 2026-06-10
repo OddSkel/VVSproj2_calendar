@@ -1,0 +1,42 @@
+{
+  "_embedded": {
+    "events": [
+      {
+        "id": "Z7r9jZ1AdOk9q",
+        "name": "Rock Concert Lisbon",
+        "url": "https://www.ticketmaster.pt/rock-concert-lisbon/event/Z7r9jZ1AdOk9q",
+        "info": "An amazing rock concert in Lisbon",
+        "dates": {
+          "start": {
+            "dateTime": "2026-07-15T21:00:00Z"
+          }
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Altice Arena"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Z7r9jZ1AdOk8p",
+        "name": "Jazz Night",
+        "url": "https://www.ticketmaster.pt/jazz-night/event/Z7r9jZ1AdOk8p",
+        "info": null,
+        "dates": {
+          "start": {
+            "dateTime": "2026-08-01T19:30:00Z"
+          }
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Teatro São Luiz"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

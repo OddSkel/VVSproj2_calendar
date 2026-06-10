@@ -1,5 +1,15 @@
 package com.example.meetings.service;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.example.meetings.discover.DiscoveredEvent;
 import com.example.meetings.model.InviteStatus;
 import com.example.meetings.model.Meeting;
@@ -8,15 +18,6 @@ import com.example.meetings.model.User;
 import com.example.meetings.repository.MeetingParticipantRepository;
 import com.example.meetings.repository.MeetingRepository;
 import com.example.meetings.repository.UserRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.time.Duration;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Service
 public class MeetingService {
@@ -35,7 +36,7 @@ public class MeetingService {
 
     @Transactional
     public Meeting propose(User organizer, String title, String description,
-                           Instant start, Instant end, List<String> inviteeUsernames) {
+                          Instant start, Instant end, List<String> inviteeUsernames) {
         if (!end.isAfter(start)) {
             throw new IllegalArgumentException("End time must be after start time");
         }

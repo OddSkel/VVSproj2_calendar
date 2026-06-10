@@ -26,11 +26,15 @@ public class TicketmasterProvider implements EventProvider {
     public TicketmasterProvider(
             @Value("${app.discover.ticketmaster.api-key:}") String apiKey,
             @Value("${app.discover.ticketmaster.country-code:PT}") String countryCode) {
+        this(apiKey, countryCode, RestClient.builder()
+                .baseUrl("https://app.ticketmaster.com/discovery/v2")
+                .build());
+    }
+
+    public TicketmasterProvider(String apiKey, String countryCode, RestClient http) {
         this.apiKey = apiKey;
         this.countryCode = countryCode;
-        this.http = RestClient.builder()
-                .baseUrl("https://app.ticketmaster.com/discovery/v2")
-                .build();
+        this.http = http;
     }
 
     @Override public String name() { return "Ticketmaster"; }

@@ -38,11 +38,15 @@ public class AgendaLxProvider implements EventProvider {
     private final RestClient http;
 
     public AgendaLxProvider() {
-        this.http = RestClient.builder()
+        this(RestClient.builder()
                 .baseUrl("https://www.agendalx.pt/wp-json/agendalx/v1")
                 .defaultHeader("User-Agent",
                         "Mozilla/5.0 (compatible; meetings-app/0.1; +http://localhost)")
-                .build();
+                .build());
+    }
+
+    public AgendaLxProvider(RestClient http) {
+        this.http = http;
     }
 
     @Override public String name() { return "Agenda Cultural de Lisboa"; }

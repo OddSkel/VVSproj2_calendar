@@ -1,0 +1,24 @@
+{
+  "events": [
+    {
+      "id": 45678,
+      "title": "FC Porto vs Benfica",
+      "short_title": "O Clássico",
+      "datetime_utc": "2026-08-20T19:45:00",
+      "url": "https://seatgeek.com/45678",
+      "description": "Primeira Liga match",
+      "venue": {
+        "name": "Estádio do Dragão"
+      }
+    },
+    {
+      "id": 45679,
+      "title": null,
+      "short_title": "Music Festival",
+      "datetime_utc": "2026-09-05T14:00:00",
+      "url": "https://seatgeek.com/45679",
+      "description": "Weekend music festival",
+      "venue": null
+    }
+  ]
+}

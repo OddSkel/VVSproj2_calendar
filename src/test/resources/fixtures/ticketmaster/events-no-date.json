@@ -1,0 +1,38 @@
+{
+  "_embedded": {
+    "events": [
+      {
+        "id": "no-date-event",
+        "name": "TBA Event",
+        "url": "https://www.ticketmaster.pt/tba-event/event/no-date-event",
+        "info": "Date to be announced",
+        "dates": {
+          "start": {
+            "dateTime": null
+          }
+        },
+        "_embedded": {
+          "venues": [
+            {
+              "name": "Some Venue"
+            }
+          ]
+        }
+      },
+      {
+        "id": "valid-event-2",
+        "name": "Valid Show",
+        "url": "https://www.ticketmaster.pt/valid-show/event/valid-event-2",
+        "info": "This one has a date",
+        "dates": {
+          "start": {
+            "dateTime": "2026-09-10T18:00:00Z"
+          }
+        },
+        "_embedded": {
+          "venues": null
+        }
+      }
+    ]
+  }
+}

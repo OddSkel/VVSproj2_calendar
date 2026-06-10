@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1001,
+    "title": { "rendered": "Concerto de Jazz no CCB" },
+    "description": ["<p>Um concerto imperdível de jazz no Centro Cultural de Belém</p>"],
+    "occurences": ["2026-07-22"],
+    "string_times": "qua: 21h30",
+    "link": "https://www.agendalx.pt/events/1001",
+    "venue": {
+      "1": { "name": "Centro Cultural de Belém" }
+    }
+  },
+  {
+    "id": 1002,
+    "title": { "rendered": "Teatro: A Peça" },
+    "description": ["<p>Uma peça de teatro emocionante</p>"],
+    "occurences": ["2026-07-23", "2026-07-24"],
+    "string_times": null,
+    "link": "https://www.agendalx.pt/events/1002",
+    "venue": {
+      "1": { "name": "Teatro Nacional D. Maria II" }
+    }
+  }
+]
