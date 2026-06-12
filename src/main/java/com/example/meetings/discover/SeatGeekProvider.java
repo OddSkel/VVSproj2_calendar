@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
@@ -25,6 +26,7 @@ public class SeatGeekProvider implements EventProvider {
     private final String clientId;
     private final RestClient http;
 
+    @Autowired
     public SeatGeekProvider(@Value("${app.discover.seatgeek.client-id:}") String clientId) {
         this(clientId, RestClient.builder().baseUrl("https://api.seatgeek.com/2").build());
     }

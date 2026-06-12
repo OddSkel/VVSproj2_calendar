@@ -3,6 +3,7 @@ package com.example.meetings.discover;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.stereotype.Component;
@@ -23,6 +24,7 @@ public class TicketmasterProvider implements EventProvider {
     private final String countryCode;
     private final RestClient http;
 
+    @Autowired
     public TicketmasterProvider(
             @Value("${app.discover.ticketmaster.api-key:}") String apiKey,
             @Value("${app.discover.ticketmaster.country-code:PT}") String countryCode) {

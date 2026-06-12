@@ -23,8 +23,8 @@ public class SecurityConfig {
                 .requestMatchers("/", "/login", "/register", "/css/**", "/js/**").permitAll()
                 // Public so calendar apps can subscribe without sending credentials. The
                 // unguessable token in the URL is the only access control here.
-                .requestMatchers("/ical/**").permitAll()
-                .requestMatchers("/h2-console/**").permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/ical/**")).permitAll()
+                .requestMatchers(new AntPathRequestMatcher("/h2-console/**")).permitAll()
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form

@@ -71,7 +71,11 @@ public class MeetingController {
         InviteStatus status = "accept".equalsIgnoreCase(action)
                 ? InviteStatus.ACCEPTED
                 : InviteStatus.DECLINED;
-        meetingService.respond(id, user, status);
+        try {
+            meetingService.respond(id, user, status);
+        } catch (RuntimeException ex) {
+            // Unknown meeting or no invite — redirect gracefully
+        }
         return "redirect:/calendar";
     }
 }
