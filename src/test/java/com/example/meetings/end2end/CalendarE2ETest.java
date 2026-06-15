@@ -15,6 +15,7 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.annotation.DirtiesContext;
 
 import com.example.meetings.MeetingsApplication;
 
@@ -22,6 +23,7 @@ import com.example.meetings.MeetingsApplication;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @TestInstance(Lifecycle.PER_CLASS)
 @ActiveProfiles("test")
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_CLASS)
 class CalendarE2ETest {
 
     @LocalServerPort
