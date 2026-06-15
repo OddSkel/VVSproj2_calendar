@@ -1,8 +1,6 @@
 package com.example.meetings.end2end;
 
-import com.example.meetings.MeetingsApplication;
-
-import org.junit.jupiter.api.AfterEach;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -11,13 +9,14 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import com.example.meetings.MeetingsApplication;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = MeetingsApplication.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -35,7 +34,7 @@ class CalendarE2ETest {
     }
 
     private WebDriver startDriver() {
-        return new HtmlUnitDriver();
+        return new HtmlUnitDriver(true);
     }
 
     private void register(WebDriver driver, String username, String email, String password) {
@@ -78,13 +77,18 @@ class CalendarE2ETest {
             driver.get(baseUrl + "/meetings/new");
             driver.findElement(By.id("title")).sendKeys("Sprint Review");
             driver.findElement(By.id("description")).sendKeys("Review sprint goals");
-            driver.findElement(By.id("start")).sendKeys("2026-07-20T10:00");
-            driver.findElement(By.id("end")).sendKeys("2026-07-20T11:00");
-            driver.findElement(By.id("invitees")).sendKeys("alice");
-            driver.findElement(By.cssSelector("button[type='submit']")).click();
 
-            assertTrue(driver.getCurrentUrl().contains("/calendar"));
-            assertTrue(driver.getPageSource().contains("Sprint Review"));
+            driver.findElement(By.id("invitees")).sendKeys("alice");
+            ((JavascriptExecutor) driver).executeScript("document.getElementById('start').value = '2026-07-20T10:00'");
+            ((JavascriptExecutor) driver).executeScript("document.getElementById('end').value = '2026-07-20T11:00'");
+            driver.findElement(By.cssSelector("form[action*='/meetings/new'] button[type='submit']")).click();
+
+            String url = driver.getCurrentUrl();
+            String page = driver.getPageSource();
+            assertTrue(url.contains("/calendar"),
+                    "Expected /calendar. URL: " + url + "\nPage start:\n"
+                    + page.substring(0, Math.min(800, page.length())));
+            assertTrue(page.contains("Sprint Review"));
         } finally {
             driver.quit();
         }
