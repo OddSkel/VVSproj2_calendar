@@ -25,7 +25,6 @@ class UserServiceTest {
 
     @Mock private UserRepository userRepository;
     @Mock private PasswordEncoder passwordEncoder;
-    //@Captor private ArgumentCaptor<User> userCaptor;
 
     private UserService service;
 

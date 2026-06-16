@@ -28,8 +28,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.ClientHttpResponse;
 import org.springframework.http.client.JdkClientHttpRequestFactory;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.ResponseErrorHandler;
@@ -128,7 +128,7 @@ class RestApiIntegrationTest {
         return (end < 0) ? null : html.substring(start, end);
     }
 
-    // ─── Auth endpoints ──────────────────────────────────────────────
+    // --- Auth endpoints ---
 
     @Test @Order(1)
     void loginPage_shouldReturnOk() {
@@ -189,7 +189,7 @@ class RestApiIntegrationTest {
                 "Should redirect to /calendar");
     }
 
-    // ─── Login and Calendar ──────────────────────────────────────────
+    // --- Login and Calendar --- 
 
     @Test @Order(6)
     void login_shouldSucceedAndRedirectToCalendar() {
@@ -226,7 +226,7 @@ class RestApiIntegrationTest {
                 "Should redirect to login when not authenticated");
     }
 
-    // ─── Meeting endpoints ───────────────────────────────────────────
+    // --- Meeting endpoints ---
 
     @Test @Order(9)
     void proposeForm_shouldReturnOk_whenAuthenticated() {
@@ -306,7 +306,7 @@ class RestApiIntegrationTest {
                 "Should redirect to /calendar even when meeting doesn't exist");
     }
 
-    // ─── iCal endpoint ───────────────────────────────────────────────
+    // --- iCal endpoint ---
 
     @Test @Order(14)
     void icalFeed_shouldReturnCalendar_whenTokenIsValid() {
@@ -331,7 +331,7 @@ class RestApiIntegrationTest {
         assertEquals(HttpStatus.NOT_FOUND, res.getStatusCode());
     }
 
-    // ─── Discovery endpoint ──────────────────────────────────────────
+    // --- Discovery endpoint ---
 
     @Test @Order(16)
     void discoverPage_shouldReturnOk_whenAuthenticated() {
